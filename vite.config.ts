@@ -1,6 +1,6 @@
 import path from 'path';
 import react from '@vitejs/plugin-react-swc';
-import pkg from './package.json' assert { type: 'json' };
+import pkg from './package.json' with { type: 'json' };
 
 import { defineConfig, loadEnv } from 'vite';
 

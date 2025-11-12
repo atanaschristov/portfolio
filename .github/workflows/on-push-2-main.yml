@@ -1,0 +1,35 @@
+name: Generate and publish public data
+
+on:
+   push:
+      branches: [main]
+   workflow_dispatch:
+
+jobs:
+   build:
+      runs-on: ubuntu-latest
+      permissions:
+         contents: write
+         pages: write
+         id-token: write
+
+      steps:
+         - name: Checkout repo
+           uses: actions/checkout@v4
+
+         - name: Setup Node.js
+           uses: actions/setup-node@v4
+           with:
+              node-version: 24
+
+         - name: Install the dependencies
+           run: npm i
+
+         - name: Copy To Public
+           run: npm run build
+
+         - name: Deploy to GitHub Pages
+           uses: peaceiris/actions-gh-pages@v4
+           with:
+              github_token: ${{ secrets.GITHUB_TOKEN }}
+              publish_dir: ./dist

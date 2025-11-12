@@ -1,4 +1,4 @@
-@import '../../../styles/colors.scss';
+@use '@/styles/colors.scss';
 
 .avatar-fallback {
 	color: var(--gray-10);
