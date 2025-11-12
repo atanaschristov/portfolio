@@ -15,6 +15,7 @@ export default defineConfig(({ mode }) => {
 				'@': path.resolve(__dirname, 'src'),
 			},
 		},
+		base: process.env.NODE_ENV === 'production' ? 'portfolio' : '',
 		define: {
 			APP_AUTHOR: JSON.stringify(pkg.author),
 			APP_VERSION: JSON.stringify(pkg.version),
