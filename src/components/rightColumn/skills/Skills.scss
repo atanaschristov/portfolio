@@ -1,0 +1,20 @@
+@import '../../../styles/colors.scss';
+
+.skills {
+	&__group {
+		& .progress-bar__fill {
+			&--expert {
+				background-image: linear-gradient(to right, var(--prof-l1), var(--prof-l5));
+			}
+			&--advanced {
+				background-image: linear-gradient(to right, var(--prof-l1), var(--prof-l4));
+			}
+			&--comfortable {
+				background-image: linear-gradient(to right, var(--prof-l1), var(--prof-l3));
+			}
+			&--beginner\/rusty {
+				background-image: linear-gradient(to right, var(--prof-l1), var(--prof-l2));
+			}
+		}
+	}
+}

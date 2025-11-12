@@ -1,0 +1,25 @@
+import path from 'path';
+import react from '@vitejs/plugin-react-swc';
+import pkg from './package.json' assert { type: 'json' };
+
+import { defineConfig, loadEnv } from 'vite';
+
+// https://vite.dev/config/
+export default defineConfig(({ mode }) => {
+	const env = loadEnv(mode, process.cwd(), '');
+
+	return {
+		plugins: [react()],
+		resolve: {
+			alias: {
+				'@': path.resolve(__dirname, 'src'),
+			},
+		},
+		define: {
+			APP_AUTHOR: JSON.stringify(pkg.author),
+			APP_VERSION: JSON.stringify(pkg.version),
+			BASE_DATA_URL: JSON.stringify(env.VITE_DATA_URL_BASE || '/'),
+			PORTFOLIO_PATH: JSON.stringify(env.VITE_PORTFOLIO_PATH || '/data/portfolio.json'),
+		},
+	};
+});

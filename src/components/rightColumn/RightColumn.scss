@@ -1,0 +1,16 @@
+.right-column {
+	min-width: 300px;
+	flex: 1;
+
+	.section {
+		margin-bottom: 2em;
+
+		&__title {
+			font-size: 1.2em;
+			font-weight: 600;
+			margin-bottom: 0.5em;
+			color: #666;
+			// border-left: #662 4px solid;
+		}
+	}
+}

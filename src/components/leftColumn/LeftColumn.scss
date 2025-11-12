@@ -1,0 +1,34 @@
+@import '@/styles/colors.scss';
+
+.left-column {
+	min-width: 300px;
+	padding-right: 2em;
+	flex: 2;
+
+	.section {
+		&__title {
+			font-size: 1.5em;
+			font-weight: 600;
+			margin-bottom: 0.5em;
+
+			&-icon {
+				margin-right: 0.5em;
+			}
+		}
+
+		hr {
+			width: 30%;
+			margin: 3rem auto; /* centers it horizontally */
+			border: none;
+			border-top: 2px solid var(--gray-4);
+		}
+
+		a {
+			color: var(--gray-12);
+
+			&:hover {
+				color: var(--black);
+			}
+		}
+	}
+}

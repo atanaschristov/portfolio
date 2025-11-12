@@ -1,0 +1,20 @@
+@import '../../../styles/colors.scss';
+
+.languages {
+	&__group {
+		& .progress-bar__fill {
+			&--native {
+				background-image: linear-gradient(to right, var(--prof-l1), var(--prof-l5));
+			}
+			&--fluent {
+				background-image: linear-gradient(to right, var(--prof-l1), var(--prof-l4));
+			}
+			&--intermediate {
+				background-image: linear-gradient(to right, var(--prof-l1), var(--prof-l3));
+			}
+			&--beginner {
+				background-image: linear-gradient(to right, var(--prof-l1), var(--prof-l2));
+			}
+		}
+	}
+}

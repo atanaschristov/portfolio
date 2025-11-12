@@ -1,0 +1,249 @@
+{
+	"personalInfo": {
+		"name": "John Doe",
+		"role": "Protectional Kamikaze Tester",
+		"pictures": ["/images/avatar/avatar-128x128.png"],
+		"bio": "Get your motor runnin' Head out on the highway. Looking for adventure. In whatever comes our way. Yeah, darlin', go and make it happen. Take the world in a love embrace. Fire all of your guns at once. And explode into space. Born to be wild. Lyrics",
+		"email": "john.doe@gmail.com",
+		"phone": "+000 000000 00000 0000 000 00 0",
+		"address": "Geo Center, South Pole",
+		"socialLinks": {
+			"linkedin": "https://www.linkedin.com/in/john-doe/",
+			"github": "https://github.com/john-doe",
+			"x": "https://x.com/john-doe"
+		}
+	},
+	"education": [
+		{
+			"id": "1",
+			"degree": "Master of Science in faking",
+			"institution": "Streets, Moscow, Russia",
+			"url": "https://iplocation.io/",
+			"subjects": [
+				"Theory of faking",
+				"Passing the lie detector",
+				"Survival in prison(practical education)",
+				"Bank robbery techniques",
+				"Social experiments with unbigueuty",
+				"Industrial money laundering",
+				"Creating fake money"
+			],
+			"period": { "start": "09/2000", "end": "06/2020" }
+		},
+		{
+			"id": "2",
+			"degree": "Bachelor in fistfight engineering",
+			"institution": "Night clubs, Cuba",
+			"url": "https://iplocation.io/",
+			"subjects": [
+				"Introduction to fistfight",
+				"Advanced fistfight techniques",
+				"Practical applications of fistfight engineering",
+				"Fighting in closed spaces",
+				"Group fighting strategies",
+				"Defense against multiple attackers"
+			],
+			"period": { "start": "09/1990", "end": "06/2000" }
+		},
+		{
+			"id": "3",
+			"degree": "Secondary School Diploma",
+			"institution": "Mediocre secondary School, Washington, USA",
+			"url": "https://iplocation.io/",
+			"subjects": [
+				"Write some basic subjects",
+				"Read some basic subjects",
+				"Do some basic math",
+				"History of something",
+				"Geography of somewhere",
+				"Dead languages",
+				"Unused skills"
+			],
+			"period": { "start": "09/1980", "end": "06/1990" }
+		}
+	],
+	"languages": [
+		{
+			"name": "English",
+			"level": "native"
+		},
+		{
+			"name": "German",
+			"level": "beginner"
+		},
+		{
+			"name": "Czech",
+			"level": "intermediate"
+		},
+		{
+			"name": "Spanish",
+			"level": "fluent"
+		},
+		{
+			"name": "Russian",
+			"level": "fluent"
+		},
+		{
+			"name": "Klingon",
+			"level": "beginner"
+		},
+		{
+			"name": "Elvish",
+			"level": "intermediate"
+		}
+	],
+	"experience": [
+		{
+			"id": "1",
+			"position": "Front-end Software Engineer",
+			"company": "BlaBala Inc.",
+			"companyUrl": "https://www.blabalainc.com/",
+			"period": { "start": "11/2018", "end": "04/2025" },
+			"projects": [
+				{ "id": "1", "name": "Project A", "url": "TODO" },
+				{ "id": "2", "name": "Project B", "url": "TODO" }
+			],
+
+			"responsibilities": [
+				"Developing and maintaining web applications using React and TypeScript.",
+				"Collaborating with designers to implement responsive UI designs.",
+				"Ensuring cross-browser compatibility among various devices."
+			]
+		},
+		{
+			"id": "2",
+			"position": "Senior Full-stack Developer",
+			"company": "Tech Innovations Inc.",
+			"companyUrl": "https://www.techinnovations.com/",
+			"period": { "start": "03/2015", "end": "10/2018" },
+			"projects": [
+				{ "id": "1", "name": "E-commerce Platform", "url": "TODO" },
+				{ "id": "2", "name": "Mobile Banking App", "url": "TODO" }
+			],
+			"responsibilities": [
+				"Architected and implemented RESTful APIs using Node.js and Express.",
+				"Led a team of 5 developers in agile development cycles.",
+				"Optimized database queries reducing load time by 40%."
+			]
+		},
+		{
+			"id": "3",
+			"position": "Backend Developer",
+			"company": "DataFlow Systems",
+			"companyUrl": "https://www.dataflowsystems.com/",
+			"period": { "start": "06/2012", "end": "02/2015" },
+			"projects": [{ "id": "1", "name": "Analytics Dashboard", "url": "TODO" }],
+			"responsibilities": [
+				"Developed microservices architecture using Java and Spring Boot.",
+				"Implemented CI/CD pipelines using Jenkins and Docker.",
+				"Mentored junior developers on best practices and code reviews."
+			]
+		},
+		{
+			"id": "4",
+			"position": "Software Developer",
+			"company": "StartupLabs",
+			"companyUrl": "https://www.startuplabs.com/",
+			"period": { "start": "01/2010", "end": "05/2012" },
+			"projects": [
+				{ "id": "1", "name": "Social Media Platform", "url": "TODO" },
+				{ "id": "2", "name": "Video Streaming Service", "url": "TODO" }
+			],
+			"responsibilities": [
+				"Built and maintained web applications using PHP and MySQL.",
+				"Implemented responsive designs using HTML, CSS, and JavaScript.",
+				"Participated in daily stand-ups and sprint planning meetings."
+			]
+		},
+		{
+			"id": "5",
+			"position": "Junior Developer",
+			"company": "CodeCraft Solutions",
+			"companyUrl": "https://www.codecraftsolutions.com/",
+			"period": { "start": "08/2007", "end": "12/2009" },
+			"responsibilities": [
+				"Assisted in developing internal tools and automation scripts.",
+				"Fixed bugs and performed unit testing for existing applications.",
+				"Collaborated with senior developers to learn industry best practices."
+			]
+		},
+		{
+			"id": "6",
+			"position": "Intern Developer",
+			"company": "Digital Dreams Agency",
+			"companyUrl": "https://www.digitaldreams.com/",
+			"period": { "start": "06/2006", "end": "07/2007" },
+			"responsibilities": [
+				"Created simple web pages using HTML and CSS.",
+				"Helped with documentation and testing of web applications.",
+				"Learned version control systems and basic programming concepts."
+			]
+		},
+		{
+			"id": "7",
+			"position": "Private",
+			"company": "Army.",
+			"period": { "start": "02/2003", "end": "06/2003" }
+		}
+	],
+	"personalProjects": [
+		{
+			"id": "1",
+			"name": "Portfolio",
+			"description": "A personal portfolio website to showcase my projects and skills.",
+			"technologies": ["React", "TypeScript", "CSS"],
+			"repo": "https://github.com/atanaschristov/portfolio",
+			"url": "https://atanaschristov.github.io/portfolio/"
+		},
+		{
+			"id": "2",
+			"name": "Agnostic-CI(ACI)",
+			"description": "Agnostic-CI is a library that provides an interface for defining and handling user commands. It can be used both as part of a web app or as a node tool",
+			"technologies": [
+				"Node.js",
+				"TypeScript",
+				"React",
+				"i18next",
+				"Vite",
+				"SCSS",
+				"Jest",
+				"GitHub Actions"
+			],
+			"repo": "https://github.com/atanaschristov/agnostic-ci",
+			"url": "https://atanaschristov.github.io/agnostic-ci/"
+		}
+	],
+	"skills": [
+		{
+			"name": "Kicking ass",
+			"level": 10
+		},
+		{
+			"name": "Washing dishes quickly",
+			"level": 9
+		},
+		{
+			"name": "Testing patience",
+			"level": 9
+		},
+		{
+			"name": "Breaking things",
+			"level": 7
+		},
+		{
+			"name": "Making friends",
+			"level": 9
+		},
+		{
+			"name": "Being awesome",
+			"level": 6
+		}
+	],
+	"interests": [
+		"Basejumping and Skydiving",
+		"Culture jamming",
+		"Social Engineering and running social experiments",
+		"Eating junk"
+	],
+	"disclaimer": "This project is open for personal and educational use. You’re free to reuse parts of it in your own projects with attribution."
+}

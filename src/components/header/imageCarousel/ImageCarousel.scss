@@ -1,0 +1,10 @@
+.image-carousel {
+	width: 128px;
+	height: 128px;
+	position: relative;
+
+	&--button-invisible {
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+	}
+}

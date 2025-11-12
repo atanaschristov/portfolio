@@ -1,0 +1,12 @@
+@import '../styles/colors.scss';
+
+.loading-screen {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background-color: var(--gray-2);
+	color: var(--gray-11);
+	font-size: 3em;
+	gap: 1rem;
+}

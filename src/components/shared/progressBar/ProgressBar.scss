@@ -1,0 +1,21 @@
+@import '@/styles/colors.scss';
+
+.progress-bar {
+	width: 100%;
+	height: 30px;
+	background-color: var(--gray-2);
+	border-radius: 5px;
+	overflow: hidden;
+
+	&__fill {
+		padding: 0 0.5em;
+		height: 100%;
+		font-size: 0.75em;
+		line-height: 2.5em;
+		text-transform: uppercase;
+		transition: width 0.3s ease-in-out;
+		&--animated {
+			animation: fillAnimation 0.5s forwards;
+		}
+	}
+}

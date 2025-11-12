@@ -1,0 +1,11 @@
+.header {
+	&__avatar {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__personal-info {
+		margin-left: 2rem;
+	}
+}
