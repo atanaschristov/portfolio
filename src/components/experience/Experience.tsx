@@ -41,16 +41,16 @@ const Experience = () => {
 					<div>Start: {period.start}</div>
 					<div>End: {period.end}</div>
 				</div>
+				{responsibilities && responsibilities.length > 0 && (
+					<ul className={cn(b('section-responsibilities'))}>
+						{responsibilities.map(renderResponsibility)}
+					</ul>
+				)}
 				{projects && projects.length > 0 && (
 					<div className={cn(b('section-projects'))}>
 						<div></div>
 						{projects.map(renderProject)}
 					</div>
-				)}
-				{responsibilities && responsibilities.length > 0 && (
-					<ul className={cn(b('section-responsibilities'))}>
-						{responsibilities.map(renderResponsibility)}
-					</ul>
 				)}
 			</div>
 		);

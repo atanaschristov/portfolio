@@ -100,7 +100,7 @@
 			"companyUrl": "https://www.blabalainc.com/",
 			"period": { "start": "11/2018", "end": "04/2025" },
 			"projects": [
-				{ "id": "1", "name": "Project A", "url": "TODO" },
+				{ "id": "1", "name": "Project A", "url": "TODO", "repo": "TODO" },
 				{ "id": "2", "name": "Project B", "url": "TODO" }
 			],
 

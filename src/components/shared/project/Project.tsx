@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useBemm as useBem } from 'bemm';
 import { useCallback } from 'react';
 
+import './Project.scss';
+
 type ProjectProps = IProject;
 
 const Project = ({ name, description, technologies, url, repo }: ProjectProps) => {
@@ -14,7 +16,11 @@ const Project = ({ name, description, technologies, url, repo }: ProjectProps) =
 	const renderTechnologies = useCallback(() => {
 		if (!technologies || technologies.length === 0) return undefined;
 
-		return technologies.map((item) => <div key={item.replace(' ', '')}>{item}</div>);
+		return technologies.map((item) => (
+			<li className={cn(b('technologies-list-item'))} key={item.replace(' ', '')}>
+				{item}
+			</li>
+		));
 	}, [technologies]);
 
 	return (
@@ -23,14 +29,16 @@ const Project = ({ name, description, technologies, url, repo }: ProjectProps) =
 				<FontAwesomeIcon icon={faBookmark} />
 				{name}
 			</div>
-			<div className={cn(b('description'))}>{description}</div>
-			<div className={cn(b('technologies'))}>
-				<div className={cn(b('technologies-heading'))}>
-					<FontAwesomeIcon icon={faPaperPlane} />
-					Technologies:
+			{description && <div className={cn(b('description'))}>{description}</div>}
+			{technologies && technologies.length > 0 && (
+				<div className={cn(b('technologies'))}>
+					<div className={cn(b('technologies-heading'))}>
+						<FontAwesomeIcon icon={faPaperPlane} />
+						Technologies:
+					</div>
+					<div className={cn(b('technologies-list'))}>{renderTechnologies()}</div>
 				</div>
-				<div className={cn(b('technologies-list'))}>{renderTechnologies()}</div>
-			</div>
+			)}
 			{(url || repo) && (
 				<div className={cn(b('links'))}>
 					<FontAwesomeIcon icon={faLink} />
@@ -38,20 +46,18 @@ const Project = ({ name, description, technologies, url, repo }: ProjectProps) =
 				</div>
 			)}
 			{url && (
-				<div className={cn(b('link'), b('link', { demo: true }))}>
-					DEMO:{' '}
+				<li className={cn(b('link'), b('link', { demo: true }))}>
 					<a href={url} target="_blank" rel="noopener noreferrer">
 						{url}{' '}
 					</a>
-				</div>
+				</li>
 			)}{' '}
 			{repo && (
-				<div className={cn(b('link'), b('link', { repo: true }))}>
-					REPO:{' '}
+				<li className={cn(b('link'), b('link', { repo: true }))}>
 					<a href={repo} target="_blank" rel="noopener noreferrer">
 						{repo}{' '}
 					</a>
-				</div>
+				</li>
 			)}
 		</div>
 	);

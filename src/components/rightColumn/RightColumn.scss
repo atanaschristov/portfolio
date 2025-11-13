@@ -1,17 +1,17 @@
+@use '@/styles/colors.scss';
+
 .right-column {
 	min-width: 300px;
 	flex: 1;
 
 	.section {
-		margin-bottom: 2em;
+		margin-bottom: 2.5em;
 
 		&__title {
 			font-size: 1.2em;
 			font-weight: 600;
 			margin-bottom: 0.5em;
-			color: #666;
-			padding: 0 1em;
-			border-left: 2px solid var(--gray-4);
+			color: var(--gray-12);
 		}
 	}
 }
