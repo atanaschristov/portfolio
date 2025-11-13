@@ -5,11 +5,12 @@ import PersonalProjects from '@/components//personalProjects/PersonalProjects';
 import Section from '@/components/shared/section/Section';
 import Skills from '@/components/skills/Skills';
 
+import { memo } from 'react';
 import { useBemm as useBem } from 'bemm';
 
 import './RightColumn.scss';
 
-const RightColumn = () => {
+const RightColumn = memo(() => {
 	const b = useBem('right-column');
 	return (
 		<div className={cn(b())}>
@@ -27,6 +28,6 @@ const RightColumn = () => {
 			</Section>
 		</div>
 	);
-};
+});
 
 export default RightColumn;

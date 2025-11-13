@@ -4,6 +4,7 @@ import Header from '@/components/header/Header';
 import LeftColumn from './leftColumn/LeftColumn';
 import RightColumn from './rightColumn/RightColumn';
 
+import { memo } from 'react';
 import { useBemm as useBem } from 'bemm';
 
 import '@/components/App.scss';
@@ -18,7 +19,8 @@ const InnerSection = ({ className, children }: InnerSectionProps) => {
 
 	return <div className={cn(b(className, 'inner'))}>{children}</div>;
 };
-function App() {
+
+const App = memo(() => {
 	const b = useBem('app');
 
 	return (
@@ -41,6 +43,6 @@ function App() {
 			</footer>
 		</>
 	);
-}
+});
 
 export default App;

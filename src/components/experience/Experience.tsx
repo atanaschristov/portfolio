@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import Period from '../shared/period/Period';
 import Project from '@/components/shared/project/Project';
 
 import { useAppContext } from '@/contexts/useAppContext';
@@ -37,18 +38,16 @@ const Experience = () => {
 					)}
 				</div>
 				<div className={cn(b('section-position'))}>{position}</div>
-				<div className={cn(b('section-period'))}>
-					<div>Start: {period.start}</div>
-					<div>End: {period.end}</div>
-				</div>
+				<Period start={period.start} end={period.end} />
 				{responsibilities && responsibilities.length > 0 && (
-					<ul className={cn(b('section-responsibilities'))}>
+					<div className={cn(b('section-responsibilities'))}>
+						<div className={cn(b('section-responsibilities-heading'))}>Responsibilities</div>
 						{responsibilities.map(renderResponsibility)}
-					</ul>
+					</div>
 				)}
 				{projects && projects.length > 0 && (
 					<div className={cn(b('section-projects'))}>
-						<div></div>
+						<div className={cn(b('section-projects-heading'))}>Projects</div>
 						{projects.map(renderProject)}
 					</div>
 				)}

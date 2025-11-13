@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import Period from '../shared/period/Period';
 
 import { useAppContext } from '@/contexts/useAppContext';
 import { useBemm as useBem } from 'bemm';
@@ -27,9 +28,7 @@ const Education = () => {
 					)}
 				</div>
 				<div className={cn(b('item-degree'))}>{degree}</div>
-				<div className={cn(b('item-period'))}>
-					{period.start} - {period.end}
-				</div>
+				<Period start={period.start} end={period.end} />
 				{subjects && <div className={cn(b('item-subjects'))}>{subjects.join(', ')}</div>}
 			</div>
 		);

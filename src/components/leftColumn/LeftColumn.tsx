@@ -7,11 +7,12 @@ import {
 	faUserGraduate as educationIcon,
 	faScrewdriverWrench as workIcon,
 } from '@fortawesome/free-solid-svg-icons';
+import { memo } from 'react';
 import { useBemm as useBem } from 'bemm';
 
 import './LeftColumn.scss';
 
-const RightColumn = () => {
+const LeftColumn = memo(() => {
 	const b = useBem('left-column');
 	return (
 		<div className={cn(b())}>
@@ -23,6 +24,6 @@ const RightColumn = () => {
 			</Section>
 		</div>
 	);
-};
+});
 
-export default RightColumn;
+export default LeftColumn;
