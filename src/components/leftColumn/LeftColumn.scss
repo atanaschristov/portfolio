@@ -7,20 +7,23 @@
 
 	.section {
 		&__title {
+			display: flex;
+			align-items: center;
+			text-align: center;
 			font-size: 1.5em;
 			font-weight: 600;
 			margin-bottom: 0.5em;
 
-			&-icon {
-				margin-right: 0.5em;
+			&::before,
+			&::after {
+				content: '';
+				flex: 1;
+				border-bottom: 1px solid var(--gray-4);
 			}
-		}
 
-		hr {
-			width: 30%;
-			margin: 3rem auto; /* centers it horizontally */
-			border: none;
-			border-top: 2px solid var(--gray-4);
+			&-icon {
+				margin: 0 0.5em;
+			}
 		}
 
 		a {

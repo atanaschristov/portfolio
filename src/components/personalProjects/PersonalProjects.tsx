@@ -1,4 +1,4 @@
-import Project from '../../shared/project/Project';
+import Project from '@/components/shared/project/Project';
 
 import { useAppContext } from '@/contexts/useAppContext';
 

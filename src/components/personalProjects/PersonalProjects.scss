@@ -1,0 +1,73 @@
+.personal-projects .project {
+	margin-bottom: 1.5em;
+	color: var(--gray-12);
+
+	&__name {
+		font-size: 1.1em;
+		margin-bottom: 0.3em;
+		color: var(--black);
+		.fa-bookmark {
+			font-size: 0.7em;
+			margin-right: 0.5rem;
+			margin-bottom: 0.1em;
+			color: var(--gray-10);
+		}
+	}
+
+	&__description {
+		font-size: 1em;
+		line-height: 1.4;
+		margin-bottom: 0.5em;
+	}
+
+	&__technologies {
+		margin-top: 0.5em;
+		font-size: 0.9em;
+
+		.fa-paper-plane {
+			font-size: 0.8em;
+			margin-right: 0.5rem;
+		}
+
+		&-heading {
+			font-size: 1em;
+		}
+
+		&-list {
+			display: flex;
+			flex-wrap: wrap;
+			div {
+				margin: 0 0.2em;
+			}
+		}
+	}
+
+	&__links {
+		margin-top: 0.5em;
+		font-size: 1em;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: var(--gray-10);
+
+		.fa-link {
+			font-size: 0.8em;
+		}
+	}
+
+	&__link {
+		font-size: 0.9em;
+		margin-top: 0.3em;
+		color: var(--gray-12);
+
+		&--demo,
+		&--repo {
+			font-size: 0.8em;
+			color: var(--blue-10);
+		}
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
