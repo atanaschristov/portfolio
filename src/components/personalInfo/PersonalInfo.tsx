@@ -1,9 +1,10 @@
 import cn from 'classnames';
 
+import { faAt } from '@fortawesome/free-solid-svg-icons';
+import { faLinkedin, faGithub, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppContext } from '@/contexts/useAppContext';
 import { useBemm as useBem } from 'bemm';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
 import './PersonalInfo.scss';
 
@@ -52,7 +53,9 @@ const PersonalInfo = () => {
 			<div className={cn(b('address'))}>{address}</div>
 			<div className={cn(b('contacts'))}>
 				<div className={cn(b('contacts__pos'))}>
-					{email || APP_AUTHOR.posname + ' AT ' + APP_AUTHOR.posdomain}
+					{email || APP_AUTHOR.uname}
+					<FontAwesomeIcon icon={faAt} />
+					{APP_AUTHOR.domain}
 				</div>
 				<div className={cn(b('contacts__tf'))}>{phone || APP_AUTHOR.tf}</div>
 			</div>
