@@ -10,7 +10,6 @@
 		&-position {
 			font-size: 1.2rem;
 			font-weight: 600;
-			// margin-bottom: 0.3rem;
 		}
 
 		&-responsibilities,
@@ -27,6 +26,34 @@
 			color: var(--gray-12);
 			margin-left: 1.1rem;
 			line-height: 1.2rem;
+		}
+
+		&-projects-heading {
+			font-size: 1.1rem;
+			background-color: transparent;
+			border: none;
+			padding: 0;
+			cursor: pointer;
+
+			&-icon {
+				margin-left: 0.5rem;
+				font-size: 0.9rem;
+				transition: transform 0.5s ease-in-out;
+
+				&--extended {
+					transform: rotate(-90deg);
+				}
+			}
+		}
+
+		&-projects-section {
+			max-height: 0;
+			overflow: hidden;
+			transition: max-height 0.5s ease-in-out;
+
+			&--extended {
+				max-height: 20rem;
+			}
 		}
 
 		.project {
