@@ -5,7 +5,8 @@
 	"type": "module",
 	"author": {
 		"name": "Atanas Christov",
-		"email": "atanaschristov@gmail.com",
+		"username": "atanaschristov",
+		"domain": "gmail.com",
 		"phone": "+420 776 007 753"
 	},
 	"scripts": {

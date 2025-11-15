@@ -26,6 +26,11 @@
 		display: flex;
 		flex-direction: row;
 		gap: 1rem;
+
+		.fa-at {
+			font-size: 0.7rem;
+			color: var(--gray-12);
+		}
 	}
 
 	&__social {

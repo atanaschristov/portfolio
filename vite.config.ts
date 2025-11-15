@@ -19,8 +19,8 @@ export default defineConfig(({ mode }) => {
 		define: {
 			APP_AUTHOR: {
 				name: pkg.author.name,
-				posname: pkg.author.email.split('@')[0].trim() || '',
-				posdomain: pkg.author.email.split('@')[1]?.trim() || '',
+				uname: pkg.author.username,
+				domain: pkg.author.domain,
 				tf: pkg.author.phone,
 			},
 			APP_VERSION: JSON.stringify(pkg.version),
