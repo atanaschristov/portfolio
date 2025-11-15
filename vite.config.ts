@@ -17,7 +17,12 @@ export default defineConfig(({ mode }) => {
 		},
 		base: process.env.NODE_ENV === 'production' ? 'portfolio' : '',
 		define: {
-			APP_AUTHOR: JSON.stringify(pkg.author),
+			APP_AUTHOR: {
+				name: pkg.author.name,
+				posname: pkg.author.email.split('@')[0].trim() || '',
+				posdomain: pkg.author.email.split('@')[1]?.trim() || '',
+				tf: pkg.author.phone,
+			},
 			APP_VERSION: JSON.stringify(pkg.version),
 			BASE_DATA_URL: JSON.stringify(env.VITE_DATA_URL_BASE || '/'),
 			PORTFOLIO_PATH: JSON.stringify(env.VITE_PORTFOLIO_PATH || '/data/portfolio.json'),

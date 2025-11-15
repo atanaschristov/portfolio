@@ -1,4 +1,4 @@
-declare const APP_AUTHOR: { name: string; email: string; phone: string };
+declare const APP_AUTHOR: { name: string; posname: string; posdomain: string; tf: string };
 declare const APP_VERSION: string;
 declare const BASE_DATA_URL: string;
 declare const PORTFOLIO_PATH: string;

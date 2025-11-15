@@ -51,8 +51,10 @@ const PersonalInfo = () => {
 			<div className={cn(b('bio'))}>{bio}</div>
 			<div className={cn(b('address'))}>{address}</div>
 			<div className={cn(b('contacts'))}>
-				<div className={cn(b('contacts__email'))}>{email || APP_AUTHOR.email}</div>
-				<div className={cn(b('contacts__phone'))}>{phone || APP_AUTHOR.phone}</div>
+				<div className={cn(b('contacts__pos'))}>
+					{email || APP_AUTHOR.posname + ' AT ' + APP_AUTHOR.posdomain}
+				</div>
+				<div className={cn(b('contacts__tf'))}>{phone || APP_AUTHOR.tf}</div>
 			</div>
 			{socialLinks && (
 				<div className={cn(b('social'))}>
