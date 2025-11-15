@@ -1,6 +1,6 @@
 import cn from 'classnames';
-import ImageCarousel from './imageCarousel/ImageCarousel';
-import PersonalInfo from './personalInfo/PersonalInfo';
+import ImageCarousel from '@/components/imageCarousel/ImageCarousel';
+import PersonalInfo from '@/components/personalInfo/PersonalInfo';
 
 import { memo } from 'react';
 import { useBemm as useBem } from 'bemm';
