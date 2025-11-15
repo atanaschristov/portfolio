@@ -2,7 +2,7 @@ import cn from 'classnames';
 import Period from '../shared/period/Period';
 import Project from '@/components/shared/project/Project';
 
-import { faHandPointLeft as projectButtonPointer } from '@fortawesome/free-solid-svg-icons';
+import { faHandPointLeft as projectButtonPointer } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppContext } from '@/contexts/useAppContext';
 import { useBemm as useBem } from 'bemm';
