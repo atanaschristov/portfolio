@@ -31,8 +31,17 @@ const Experience = () => {
 	if (!experience) return;
 
 	const renderProject = (project: IProject) => {
-		const { id } = project;
-		return <Project key={id} {...project} />;
+		const { id, etc } = project;
+		return (
+			<>
+				<Project key={id} {...project} />
+				{etc && (
+					<div className={cn(b('section-projects-section-etc'))} key={id}>
+						{etc.endsWith('...') ? etc : `${etc}...`}
+					</div>
+				)}
+			</>
+		);
 	};
 
 	const renderResponsibility = (responsibility: string) => {

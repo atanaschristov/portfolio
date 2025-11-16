@@ -49,6 +49,7 @@ interface IProject {
 	technologies?: string[];
 	repo?: string;
 	url?: string;
+	etc?: string;
 }
 
 interface IExperienceSection {
