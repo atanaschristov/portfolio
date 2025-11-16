@@ -13,7 +13,7 @@ const start = async () => {
 	let appContext: IAppContext | undefined;
 
 	try {
-		const listIndex: IListIndexData = await fetch(`${BASE_DATA_URL}` + '/index.json').then(
+		const listIndex: IListIndexData = await fetch(`${BASE_DATA_URL}` + '/index.data').then(
 			(res) => res.json(),
 		);
 		const { generated, generatedAt } = listIndex;

@@ -51,16 +51,24 @@
 			overflow: hidden;
 			transition: max-height 0.5s ease-in-out;
 
+			&-etc {
+				font-size: 0.9rem;
+				font-style: italic;
+				color: var(--gray-12);
+			}
+
 			&--extended {
-				max-height: 20rem;
+				max-height: 40rem;
 			}
 		}
 
 		.project {
-			margin-bottom: 0.3rem;
+			margin-bottom: 1rem;
+			border-left: 2px solid var(--gray-6);
+			padding-left: 1rem;
 
 			&__name {
-				color: var(--gray-12);
+				color: var(--gray-14);
 				font-size: 0.9rem;
 			}
 
