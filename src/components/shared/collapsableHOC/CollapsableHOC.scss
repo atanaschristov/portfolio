@@ -1,0 +1,26 @@
+$animation: 0.3s ease-in-out;
+
+.collapsable-section {
+	&__heading {
+		background-color: transparent;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+	}
+
+	&__heading-icon {
+		margin-left: 0.5em;
+		font-size: 0.8em;
+		transition: transform $animation;
+
+		&--extended {
+			transform: rotate(-90deg);
+		}
+	}
+
+	&__content {
+		height: 0;
+		overflow: hidden;
+		transition: height $animation;
+	}
+}

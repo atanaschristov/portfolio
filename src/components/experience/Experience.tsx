@@ -1,12 +1,11 @@
 import cn from 'classnames';
+import CollapsableHOC from '../shared/collapsableHOC/CollapsableHOC';
 import Period from '../shared/period/Period';
 import Project from '@/components/shared/project/Project';
 
-import { faHandPointLeft as projectButtonPointer } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppContext } from '@/contexts/useAppContext';
 import { useBemm as useBem } from 'bemm';
-import { useEffect, useState } from 'react';
+import { useCallback } from 'react';
 
 import './Experience.scss';
 
@@ -14,41 +13,26 @@ const Experience = () => {
 	const b = useBem('experience');
 	const { portfolio } = useAppContext() || {};
 	const experience = portfolio?.experience;
-	const [projectsExtended, setProjectsExtended] = useState<{ [experienceId: string]: boolean }>(
-		{},
-	);
 
-	useEffect(() => {
-		if (experience) {
-			const initialProjectsState: { [experienceId: string]: boolean } = {};
-			experience.forEach((exp) => {
-				initialProjectsState[exp.id] = false;
-			});
-			setProjectsExtended(initialProjectsState);
-		}
-	}, [experience]);
-
-	if (!experience) return;
-
-	const renderProject = (project: IProject) => {
+	const renderProject = useCallback((project: IProject) => {
 		const { id, etc } = project;
 		return (
 			<>
 				<Project key={id} {...project} />
 				{etc && (
-					<div className={cn(b('section-projects-section-etc'))} key={id}>
+					<div className={cn(b('section-projects-etc'))} key={id}>
 						{etc.endsWith('...') ? etc : `${etc}...`}
 					</div>
 				)}
 			</>
 		);
-	};
+	}, []);
 
-	const renderResponsibility = (responsibility: string) => {
+	const renderResponsibility = useCallback((responsibility: string) => {
 		return <li key={responsibility}>{responsibility}</li>;
-	};
+	}, []);
 
-	const renderExperience = (experienceItem: IExperienceSection) => {
+	const renderExperience = useCallback((experienceItem: IExperienceSection) => {
 		const { id, company, companyUrl, projects, responsibilities, position, period } =
 			experienceItem;
 		return (
@@ -71,38 +55,15 @@ const Experience = () => {
 					</div>
 				)}
 				{projects && projects.length > 0 && (
-					<div className={cn(b('section-projects'))}>
-						<button
-							className={cn(b('section-projects-heading'))}
-							onClick={() => {
-								setProjectsExtended((prevState) => ({
-									...prevState,
-									[id]: !prevState[id],
-								}));
-							}}
-						>
-							Projects
-							<FontAwesomeIcon
-								icon={projectButtonPointer}
-								className={cn(
-									b('section-projects-heading-icon'),
-									b('section-projects-heading-icon', { extended: projectsExtended[id] }),
-								)}
-							/>
-						</button>
-						<div
-							className={cn(
-								b('section-projects-section'),
-								b('section-projects-section', { extended: projectsExtended[id] }),
-							)}
-						>
-							{projects.map(renderProject)}
-						</div>
-					</div>
+					<CollapsableHOC heading="Projects" className={cn(b('section-projects'))}>
+						{projects.map(renderProject)}
+					</CollapsableHOC>
 				)}
 			</div>
 		);
-	};
+	}, []);
+
+	if (!experience) return;
 
 	experience.map(renderExperience);
 
