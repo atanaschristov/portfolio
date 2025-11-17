@@ -7,12 +7,12 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 export type SectionPosition = 'left' | 'right';
 
 interface LSectionProps {
-	icon?: IconProp;
-	title: string;
 	children: React.ReactNode | undefined;
+	title: string;
+	icon?: IconProp;
 }
 
-const LSection = ({ icon, title, children }: LSectionProps) => {
+const Section = ({ icon, title, children }: LSectionProps) => {
 	const b = useBem('section');
 
 	return (
@@ -26,4 +26,4 @@ const LSection = ({ icon, title, children }: LSectionProps) => {
 	);
 };
 
-export default LSection;
+export default Section;
