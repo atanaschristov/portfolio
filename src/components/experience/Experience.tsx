@@ -17,14 +17,14 @@ const Experience = () => {
 	const renderProject = useCallback((project: IProject) => {
 		const { id, etc } = project;
 		return (
-			<>
-				<Project key={id} {...project} />
+			<div key={id}>
+				<Project {...project} />
 				{etc && (
-					<div className={cn(b('section-projects-etc'))} key={id}>
+					<div className={cn(b('section-projects-etc'))}>
 						{etc.endsWith('...') ? etc : `${etc}...`}
 					</div>
 				)}
-			</>
+			</div>
 		);
 	}, []);
 
