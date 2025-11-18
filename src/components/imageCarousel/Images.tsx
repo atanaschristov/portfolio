@@ -33,7 +33,13 @@ const Image = memo(({ selected, imageUrls }: ImagesProps) => {
 		return imageUrls.map((url, index) => {
 			return (
 				<div className={cn(b('image'))} style={{ left: positions[index] }} key={url}>
-					<img src={`${BASE_DATA_URL}${url}`} alt="Personal Image" />
+					<img
+						src={`${BASE_DATA_URL}${url}`}
+						alt={`Image ${url}`}
+						onError={(e) => {
+							e.currentTarget.src = '/images/fallback.jpg';
+						}}
+					/>
 				</div>
 			);
 		});
