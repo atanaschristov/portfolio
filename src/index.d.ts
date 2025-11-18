@@ -2,6 +2,7 @@ declare const APP_AUTHOR: { name: string; uname: string; domain: string; tf: str
 declare const APP_VERSION: string;
 declare const BASE_DATA_URL: string;
 declare const PORTFOLIO_PATH: string;
+declare const ROOT_PATH: string;
 
 type Platform =
 	| 'linkedin'
