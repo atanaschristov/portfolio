@@ -37,7 +37,7 @@ const Image = memo(({ selected, imageUrls }: ImagesProps) => {
 						src={`${BASE_DATA_URL}${url}`}
 						alt={`Image ${url}`}
 						onError={(e) => {
-							e.currentTarget.src = '/images/fallback.jpg';
+							e.currentTarget.src = `${ROOT_PATH}/images/fallback.jpg`;
 						}}
 					/>
 				</div>

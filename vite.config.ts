@@ -26,6 +26,7 @@ export default defineConfig(({ mode }) => {
 			APP_VERSION: JSON.stringify(pkg.version),
 			BASE_DATA_URL: JSON.stringify(env.VITE_DATA_URL_BASE || '/'),
 			PORTFOLIO_PATH: JSON.stringify(env.VITE_PORTFOLIO_PATH || '/data/portfolio.json'),
+			ROOT_PATH: JSON.stringify(process.env.NODE_ENV === 'production' ? env.VITE_ROOT_PATH : ''),
 		},
 	};
 });
