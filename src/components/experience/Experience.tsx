@@ -6,11 +6,13 @@ import Project from '@/components/shared/project/Project';
 import { useAppContext } from '@/contexts/useAppContext';
 import { useBemm as useBem } from 'bemm';
 import { useCallback } from 'react';
+import { usePrintModeContext } from '@/contexts/usePrintModeContext';
 
 import './Experience.scss';
 
 const Experience = () => {
 	const b = useBem('experience');
+	const isPrintMode = usePrintModeContext();
 	const { portfolio } = useAppContext() || {};
 	const experience = portfolio?.experience;
 
@@ -47,14 +49,14 @@ const Experience = () => {
 					)}
 				</div>
 				<div className={cn(b('section-position'))}>{position}</div>
-				<Period start={period.start} end={period.end} />
+				{!isPrintMode && <Period start={period.start} end={period.end} />}
 				{responsibilities && responsibilities.length > 0 && (
 					<div className={cn(b('section-responsibilities'))}>
 						<div className={cn(b('section-responsibilities-heading'))}>Responsibilities</div>
 						{responsibilities.map(renderResponsibility)}
 					</div>
 				)}
-				{projects && projects.length > 0 && (
+				{!isPrintMode && projects && projects.length > 0 && (
 					<CollapsableHOC heading="Projects" className={cn(b('section-projects'))}>
 						{projects.map(renderProject)}
 					</CollapsableHOC>

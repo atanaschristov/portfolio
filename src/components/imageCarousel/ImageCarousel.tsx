@@ -5,11 +5,13 @@ import Images from './Images';
 import { memo, useCallback, useMemo, useState } from 'react';
 import { useAppContext } from '@/contexts/useAppContext';
 import { useBemm as useBem } from 'bemm';
+import { usePrintModeContext } from '@/contexts/usePrintModeContext';
 
 import './ImageCarousel.scss';
 
 const ImageCarousel = memo(() => {
 	const b = useBem('image-carousel');
+	const isPrintMode = usePrintModeContext();
 	const { portfolio } = useAppContext() || {};
 	const { personalInfo } = portfolio || {};
 
@@ -43,7 +45,7 @@ const ImageCarousel = memo(() => {
 
 	return (
 		<div className={cn(b())} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-			{pictures.length > 1 && (
+			{pictures.length > 1 && !isPrintMode && (
 				<CarouselButton
 					className={cn(b('', { 'button-invisible': buttonsInvisible }))}
 					direction="left"
@@ -51,7 +53,7 @@ const ImageCarousel = memo(() => {
 				/>
 			)}
 			<Images selected={selected} imageUrls={pictures} />
-			{pictures.length > 1 && (
+			{pictures.length > 1 && !isPrintMode && (
 				<CarouselButton
 					className={cn(b('', { 'button-invisible': buttonsInvisible }))}
 					direction="right"

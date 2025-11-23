@@ -7,7 +7,7 @@
 	&__role {
 		font-size: 1.2rem;
 		font-weight: 600;
-		color: #333;
+		color: var(--gray-13);
 	}
 
 	&__bio {
@@ -42,17 +42,17 @@
 			text-decoration: none;
 
 			&:link {
-				color: #444;
+				color: var(--gray-12);
 			}
 			&:visited {
-				color: #444;
+				color: var(--gray-12);
 			}
 			&:active {
-				color: #000;
+				color: var(--black);
 			}
 
 			&:hover {
-				color: #000;
+				color: var(--black);
 			}
 		}
 	}
