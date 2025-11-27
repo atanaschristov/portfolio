@@ -19,7 +19,7 @@ const CollapsableHOC = ({ heading, children, className }: CollapsableHOCProps) =
 	const sectionRef = useRef<HTMLDivElement>(null);
 	const { isPrintMode } = usePrintModeContext();
 
-	const [isExtended, setExtended] = useState<boolean>(isPrintMode);
+	const [isExtended, setExtended] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (isPrintMode) {
@@ -28,9 +28,9 @@ const CollapsableHOC = ({ heading, children, className }: CollapsableHOCProps) =
 
 			section.style.height = 'auto';
 
-			setExtended(isPrintMode);
+			setExtended(isExtended);
 		}
-	}, [isPrintMode]);
+	}, [isExtended]);
 
 	const onClick = useCallback(() => {
 		const section = sectionRef.current;
