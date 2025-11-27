@@ -1,0 +1,103 @@
+.print-mode-view {
+	&__content,
+	&__header,
+	&__footer,
+	&__bars {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 2rem;
+
+		&--inner {
+			width: 794px; // A4 width in px at 96dpi
+			padding: 0 10rem;
+		}
+	}
+
+	&__content {
+		margin-top: 1rem;
+	}
+
+	&__header,
+	&__footer,
+	&__bars {
+		background: var(--gray-2);
+
+		&--inner {
+			display: flex;
+			flex-direction: row;
+		}
+	}
+
+	&__bars {
+		&--inner .section {
+			width: 50%;
+			.languages,
+			&__title {
+				margin-left: 1rem;
+			}
+			.skills,
+			&__title {
+				margin-right: 1rem;
+			}
+		}
+	}
+
+	.section {
+		&__title {
+			display: flex;
+			align-items: center;
+			text-align: center;
+			font-size: 1.5em;
+			font-weight: 600;
+			margin-bottom: 0.5em;
+
+			&::before,
+			&::after {
+				content: '';
+				flex: 1;
+				border-bottom: 1px solid var(--gray-4);
+			}
+
+			&-icon {
+				margin: 0 0.5em;
+			}
+		}
+	}
+}
+
+@media print {
+	body * {
+		// using visibility hidden instead of display none to due to chrome bug
+		// A discussion here: https://issues.chromium.org/issues/40331504?utm_source=chatgpt.com
+		// Explanation: In print preview mode, chrome does the rendering in two passes.
+		// 1. pre-print phase where it calculates the layout and pagination
+		// 2. actual print phase where it renders the content to be printed
+		// During the pre-print phase, if an element is set to display: none, it is completely removed from the layout calculations.
+		// If later the element is displayed again it is not added in the layout
+		// Thus the print block we want to print only is not considered and print preview shows a blank page.
+		visibility: hidden !important;
+
+		// by default chrome, safary and firefox disable the background graphics putting the page in an ink saving mode
+		// we want to enable them, because the main idea is to generate pdf's out of the pages
+		-webkit-print-color-adjust: exact !important; /* Chrome, Safari */
+		print-color-adjust: exact !important; /* Firefox, Edge */
+	}
+
+	#print-root,
+	#print-root * {
+		visibility: visible !important;
+	}
+
+	#print-root {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+	}
+
+	// controls the internal print page margins, which are used to display page number, host, title, etc...
+	@page {
+		margin: 3rem 0;
+	}
+}

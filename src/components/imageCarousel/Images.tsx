@@ -1,10 +1,10 @@
+import AvatarFallback from './AvatarFallback';
 import cn from 'classnames';
 
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useBemm as useBem } from 'bemm';
 
 import './Images.scss';
-import AvatarFallback from './AvatarFallback';
 
 interface ImagesProps {
 	selected: number;
@@ -30,6 +30,7 @@ const Image = memo(({ selected, imageUrls }: ImagesProps) => {
 
 	const images = useMemo(() => {
 		if (!imageUrls || imageUrls.length === 0) return [<AvatarFallback key="avatar-fallback" />];
+
 		return imageUrls.map((url, index) => {
 			return (
 				<div className={cn(b('image'))} style={{ left: positions[index] }} key={url}>
