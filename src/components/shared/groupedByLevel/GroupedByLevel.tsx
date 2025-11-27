@@ -38,10 +38,6 @@ const GroupedByLevel = ({
 	const renderGroupElements = useCallback((groupElement: string) => {
 		return (
 			<div className={cn('group-title-element')} key={groupElement}>
-				{/* <div className={cn('tooltip')}>
-					<span>{input.find((item) => item.name === groupElement)?.level}</span>
-					<span className="color"></span>
-				</div> */}
 				<div className={cn('value')}>{groupElement}</div>
 			</div>
 		);
@@ -54,7 +50,6 @@ const GroupedByLevel = ({
 		} else {
 			numericLevel = input.find((item) => item.name === group[0])?.level as number;
 		}
-		// console.log('Rendering group for level:', level, 'with numeric level:', numericLevel);
 		return (
 			group &&
 			group.length > 0 && (

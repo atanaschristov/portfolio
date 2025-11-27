@@ -5,7 +5,7 @@ import Section from '@/components/shared/section/Section';
 
 import {
 	faUserGraduate as educationIcon,
-	faScrewdriverWrench as workIcon,
+	faAward as experienceIcon,
 } from '@fortawesome/free-solid-svg-icons';
 import { memo } from 'react';
 import { useBemm as useBem } from 'bemm';
@@ -16,7 +16,7 @@ const LeftColumn = memo(() => {
 	const b = useBem('left-column');
 	return (
 		<div className={cn(b())}>
-			<Section title="experience" icon={workIcon}>
+			<Section title="experience" icon={experienceIcon}>
 				<Experience />
 			</Section>
 			<Section title="education" icon={educationIcon}>

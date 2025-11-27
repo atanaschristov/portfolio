@@ -1,4 +1,5 @@
-import ViewPrintMode from './viewPrintMode/ViewPrintMode';
+import ViewPrintContent from '@/components/viewPrintMode/PrintContent';
+import ViewPrintManager from '@/components/viewPrintMode/PrintManager';
 import ViewWeb from '@/components/viewWeb/ViewWeb';
 
 import { memo, useState } from 'react';
@@ -9,16 +10,18 @@ import '@/components/App.scss';
 const App = memo(() => {
 	const [isPrintMode, setPrintMode] = useState<boolean>(false);
 
-	const togglePrintMode = () => {
-		setPrintMode((prev) => !prev);
-	};
+	const onPrintEnd = () => setPrintMode(false);
+	const onPrintStart = () => setPrintMode(true);
 
 	return (
 		<>
-			<ViewWeb togglePrintMode={togglePrintMode} />
+			<ViewWeb togglePrintMode={onPrintStart} />
 			<PrintModeContext.Provider value={isPrintMode}>
-				<div id="print-root" />
-				{isPrintMode && <ViewPrintMode togglePrintMode={togglePrintMode} />}
+				{isPrintMode && (
+					<ViewPrintManager onPrintEnd={onPrintEnd}>
+						<ViewPrintContent />
+					</ViewPrintManager>
+				)}
 			</PrintModeContext.Provider>
 		</>
 	);

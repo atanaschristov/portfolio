@@ -49,7 +49,7 @@ const Experience = () => {
 					)}
 				</div>
 				<div className={cn(b('section-position'))}>{position}</div>
-				{!isPrintMode && <Period start={period.start} end={period.end} />}
+				<Period start={period.start} end={period.end} />
 				{responsibilities && responsibilities.length > 0 && (
 					<div className={cn(b('section-responsibilities'))}>
 						<div className={cn(b('section-responsibilities-heading'))}>Responsibilities</div>

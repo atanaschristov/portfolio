@@ -10,6 +10,11 @@
 			font-weight: 600;
 			margin-bottom: 0.5em;
 			color: var(--gray-12);
+
+			&-icon {
+				margin-right: 0.5em;
+				font-size: 0.9em;
+			}
 		}
 	}
 }

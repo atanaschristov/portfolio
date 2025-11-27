@@ -5,6 +5,14 @@ import PersonalProjects from '@/components//personalProjects/PersonalProjects';
 import Section from '@/components/shared/section/Section';
 import Skills from '@/components/skills/Skills';
 
+import {
+	faEarthAmericas as languagesIcon,
+	faScrewdriverWrench as skillsIcon,
+	faCubes as interestsIcon,
+	// faFileCode as projectsIcon,
+	faFolderOpen as projectsIcon,
+} from '@fortawesome/free-solid-svg-icons';
+// import { faFileCode as projectsIcon } from '@fortawesome/free-regular-svg-icons';
 import { memo } from 'react';
 import { useBemm as useBem } from 'bemm';
 
@@ -14,16 +22,16 @@ const RightColumn = memo(() => {
 	const b = useBem('right-column');
 	return (
 		<div className={cn(b())}>
-			<Section title="skills">
+			<Section title="skills" icon={skillsIcon}>
 				<Skills />
 			</Section>
-			<Section title="Projects">
+			<Section title="Projects" icon={projectsIcon}>
 				<PersonalProjects />
 			</Section>
-			<Section title="languages">
+			<Section title="languages" icon={languagesIcon}>
 				<Languages />
 			</Section>
-			<Section title="interests">
+			<Section title="interests" icon={interestsIcon}>
 				<Interests />
 			</Section>
 		</div>

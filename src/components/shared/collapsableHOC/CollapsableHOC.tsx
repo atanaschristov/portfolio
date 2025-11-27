@@ -3,7 +3,8 @@ import cn from 'classnames';
 import { faHandPointLeft as projectButtonPointer } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useBemm as useBem } from 'bemm';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { usePrintModeContext } from '@/contexts/usePrintModeContext';
 
 import './CollapsableHOC.scss';
 
@@ -16,8 +17,20 @@ interface CollapsableHOCProps {
 const CollapsableHOC = ({ heading, children, className }: CollapsableHOCProps) => {
 	const b = useBem('collapsable-section');
 	const sectionRef = useRef<HTMLDivElement>(null);
+	const isPrintMode = usePrintModeContext();
 
-	const [isExtended, setExtended] = useState<boolean>(false);
+	const [isExtended, setExtended] = useState<boolean>(isPrintMode);
+
+	useEffect(() => {
+		if (isPrintMode) {
+			const section = sectionRef.current;
+			if (!section) return;
+
+			section.style.height = 'auto';
+
+			setExtended(isPrintMode);
+		}
+	}, [isPrintMode]);
 
 	const onClick = useCallback(() => {
 		const section = sectionRef.current;
@@ -49,13 +62,15 @@ const CollapsableHOC = ({ heading, children, className }: CollapsableHOCProps) =
 
 	return (
 		<div className={cn(b(), className)}>
-			<button className={cn(b('heading'))} onClick={onClick}>
-				{heading}
-				<FontAwesomeIcon
-					icon={projectButtonPointer}
-					className={cn(b('heading-icon'), b('heading-icon', { extended: isExtended }))}
-				/>
-			</button>
+			{!isPrintMode && (
+				<button className={cn(b('heading'))} onClick={onClick}>
+					{heading}
+					<FontAwesomeIcon
+						icon={projectButtonPointer}
+						className={cn(b('heading-icon'), b('heading-icon', { extended: isExtended }))}
+					/>
+				</button>
+			)}
 			<div ref={sectionRef} className={cn(b('content'), b('content', { extended: isExtended }))}>
 				{children}
 			</div>
