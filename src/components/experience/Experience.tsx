@@ -12,7 +12,7 @@ import './Experience.scss';
 
 const Experience = () => {
 	const b = useBem('experience');
-	const isPrintMode = usePrintModeContext();
+	const { isPrintMode } = usePrintModeContext();
 	const { portfolio } = useAppContext() || {};
 	const experience = portfolio?.experience;
 

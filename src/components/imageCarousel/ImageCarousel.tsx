@@ -11,7 +11,7 @@ import './ImageCarousel.scss';
 
 const ImageCarousel = memo(() => {
 	const b = useBem('image-carousel');
-	const isPrintMode = usePrintModeContext();
+	const { isPrintMode, selectedImageIndex, setSelectedImageIndex } = usePrintModeContext();
 	const { portfolio } = useAppContext() || {};
 	const { personalInfo } = portfolio || {};
 
@@ -20,7 +20,6 @@ const ImageCarousel = memo(() => {
 	}, [personalInfo?.pictures]);
 
 	const [buttonsInvisible, setButtonsInvisible] = useState(true);
-	const [selected, setSelected] = useState(0);
 
 	const handleMouseEnter = useCallback(() => setButtonsInvisible(false), []);
 	const handleMouseLeave = useCallback(() => setButtonsInvisible(true), []);
@@ -31,16 +30,16 @@ const ImageCarousel = memo(() => {
 		(direction: Direction) => {
 			switch (direction) {
 				case 'left':
-					setSelected(selected - 1);
+					setSelectedImageIndex?.(selectedImageIndex - 1);
 					break;
 				case 'right':
-					setSelected(selected + 1);
+					setSelectedImageIndex?.(selectedImageIndex + 1);
 					break;
 				default:
 					break;
 			}
 		},
-		[selected, pictures.length],
+		[selectedImageIndex, pictures.length],
 	);
 
 	return (
@@ -52,7 +51,7 @@ const ImageCarousel = memo(() => {
 					onClick={() => onClick('left')}
 				/>
 			)}
-			<Images selected={selected} imageUrls={pictures} />
+			<Images selected={selectedImageIndex} imageUrls={pictures} />
 			{pictures.length > 1 && !isPrintMode && (
 				<CarouselButton
 					className={cn(b('', { 'button-invisible': buttonsInvisible }))}

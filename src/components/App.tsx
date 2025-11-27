@@ -9,21 +9,20 @@ import '@/components/App.scss';
 
 const App = memo(() => {
 	const [isPrintMode, setPrintMode] = useState<boolean>(false);
+	const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
 	const onPrintEnd = () => setPrintMode(false);
 	const onPrintStart = () => setPrintMode(true);
 
 	return (
-		<>
+		<PrintModeContext.Provider value={{ isPrintMode, selectedImageIndex, setSelectedImageIndex }}>
 			<ViewWeb togglePrintMode={onPrintStart} />
-			<PrintModeContext.Provider value={isPrintMode}>
-				{isPrintMode && (
-					<ViewPrintManager onPrintEnd={onPrintEnd}>
-						<ViewPrintContent />
-					</ViewPrintManager>
-				)}
-			</PrintModeContext.Provider>
-		</>
+			{isPrintMode && (
+				<ViewPrintManager onPrintEnd={onPrintEnd}>
+					<ViewPrintContent />
+				</ViewPrintManager>
+			)}
+		</PrintModeContext.Provider>
 	);
 });
 

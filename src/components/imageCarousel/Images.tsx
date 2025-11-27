@@ -3,7 +3,6 @@ import cn from 'classnames';
 
 import { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useBemm as useBem } from 'bemm';
-import { usePrintModeContext } from '@/contexts/usePrintModeContext';
 
 import './Images.scss';
 
@@ -17,7 +16,6 @@ const STEP = 128;
 
 const Image = memo(({ selected, imageUrls }: ImagesProps) => {
 	const b = useBem('images');
-	const isPrintMode = usePrintModeContext();
 	const recalculatePositions = useCallback((selected: number) => {
 		const newPositions: number[] = [];
 		imageUrls.forEach((_, index) => {
@@ -32,9 +30,8 @@ const Image = memo(({ selected, imageUrls }: ImagesProps) => {
 
 	const images = useMemo(() => {
 		if (!imageUrls || imageUrls.length === 0) return [<AvatarFallback key="avatar-fallback" />];
-		const filteredImages = isPrintMode ? imageUrls.slice(0, 1) : imageUrls;
 
-		return filteredImages.map((url, index) => {
+		return imageUrls.map((url, index) => {
 			return (
 				<div className={cn(b('image'))} style={{ left: positions[index] }} key={url}>
 					<img

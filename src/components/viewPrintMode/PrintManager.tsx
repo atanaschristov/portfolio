@@ -1,7 +1,7 @@
 import cn from 'classnames';
 
 import { AppContext, useAppContext } from '@/contexts/useAppContext.tsx';
-import { PrintModeContext } from '@/contexts/usePrintModeContext';
+import { PrintModeContext, usePrintModeContext } from '@/contexts/usePrintModeContext';
 import { createRoot } from 'react-dom/client';
 import { useBemm as useBem } from 'bemm';
 import { useEffect, useRef } from 'react';
@@ -18,6 +18,7 @@ const PrintManager = ({
 	const rootRef = useRef<ReturnType<typeof createRoot> | null>(null);
 	const printedRef = useRef(false);
 	const appContext = useAppContext();
+	const printModeContext = usePrintModeContext();
 
 	useEffect(() => {
 		if (!containerRef.current) return;
@@ -28,7 +29,7 @@ const PrintManager = ({
 		}
 
 		rootRef.current.render(
-			<PrintModeContext.Provider value={true}>
+			<PrintModeContext.Provider value={{ ...printModeContext }}>
 				<AppContext.Provider value={appContext}>{children}</AppContext.Provider>
 			</PrintModeContext.Provider>,
 		);

@@ -11,11 +11,11 @@ const Footer = () => {
 
 	const b = useBem('footer');
 	const disclaimer = portfolio?.disclaimer || '';
-	const isPPrintMode = usePrintModeContext();
+	const { isPrintMode } = usePrintModeContext();
 
 	return (
 		<>
-			{!isPPrintMode && (
+			{!isPrintMode && (
 				<div className={cn(b('info'))}>
 					<div className={cn(b('info-item'))}>{generatedAt?.toLocaleDateString('de-DE')}</div>
 					<div className={cn(b('info-item'))}>{APP_AUTHOR.name}</div>

@@ -17,7 +17,7 @@ interface CollapsableHOCProps {
 const CollapsableHOC = ({ heading, children, className }: CollapsableHOCProps) => {
 	const b = useBem('collapsable-section');
 	const sectionRef = useRef<HTMLDivElement>(null);
-	const isPrintMode = usePrintModeContext();
+	const { isPrintMode } = usePrintModeContext();
 
 	const [isExtended, setExtended] = useState<boolean>(isPrintMode);
 
