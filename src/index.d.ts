@@ -87,6 +87,8 @@ interface IPortfolio {
 interface IAppContext {
 	portfolio: IPortfolio;
 	generatedAt: Date;
+	selectedImageIndex: number;
+	setSelectedImageIndex: (index: number) => void;
 }
 
 interface IListIndexData {

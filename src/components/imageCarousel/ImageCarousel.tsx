@@ -11,8 +11,11 @@ import './ImageCarousel.scss';
 
 const ImageCarousel = memo(() => {
 	const b = useBem('image-carousel');
-	const { isPrintMode, selectedImageIndex, setSelectedImageIndex } = usePrintModeContext();
-	const { portfolio } = useAppContext() || {};
+	const { isPrintMode } = usePrintModeContext();
+	const { portfolio, selectedImageIndex, setSelectedImageIndex } = useAppContext() || {
+		selectedImageIndex: 0,
+		setSelectedImageIndex: undefined,
+	};
 	const { personalInfo } = portfolio || {};
 
 	const pictures = useMemo(() => {
