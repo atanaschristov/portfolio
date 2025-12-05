@@ -43,25 +43,28 @@ const GroupedByLevel = ({
 		);
 	}, []);
 
-	const renderGroups = useCallback(([level, group]: [string, string[]]) => {
-		let numericLevel = 0;
-		if (levelMapping) {
-			numericLevel = levelMapping ? levelMapping[level] : Number(level);
-		} else {
-			numericLevel = input.find((item) => item.name === group[0])?.level as number;
-		}
-		return (
-			group &&
-			group.length > 0 && (
-				<div className={cn(b('group'), 'group')} key={level}>
-					<div className={cn(b('title'), 'group-title')}>
-						{group.map((item) => renderGroupElements(item))}
+	const renderGroups = useCallback(
+		([level, group]: [string, string[]]) => {
+			let numericLevel = 0;
+			if (levelMapping) {
+				numericLevel = levelMapping ? levelMapping[level] : Number(level);
+			} else {
+				numericLevel = input.find((item) => item.name === group[0])?.level as number;
+			}
+			return (
+				group &&
+				group.length > 0 && (
+					<div className={cn(b('group'), 'group')} key={level}>
+						<div className={cn(b('title'), 'group-title')}>
+							{group.map((item) => renderGroupElements(item))}
+						</div>
+						<ProgressBar level={numericLevel} maxLevel={maxLevel} label={level} />
 					</div>
-					<ProgressBar level={numericLevel} maxLevel={maxLevel} label={level} />
-				</div>
-			)
-		);
-	}, []);
+				)
+			);
+		},
+		[b, input, levelMapping, maxLevel, renderGroupElements],
+	);
 
 	useEffect(() => {
 		setLevelGroups(groupByLevel(input));

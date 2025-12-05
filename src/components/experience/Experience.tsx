@@ -16,54 +16,62 @@ const Experience = () => {
 	const { portfolio } = useAppContext() || {};
 	const experience = portfolio?.experience;
 
-	const renderProject = useCallback((project: IProject) => {
-		const { id, etc } = project;
-		return (
-			<div key={id}>
-				<Project {...project} />
-				{etc && (
-					<div className={cn(b('section-projects-etc'))}>
-						{etc.endsWith('...') ? etc : `${etc}...`}
-					</div>
-				)}
-			</div>
-		);
-	}, []);
+	const renderProject = useCallback(
+		(project: IProject) => {
+			const { id, etc } = project;
+			return (
+				<div key={id}>
+					<Project {...project} />
+					{etc && (
+						<div className={cn(b('section-projects-etc'))}>
+							{etc.endsWith('...') ? etc : `${etc}...`}
+						</div>
+					)}
+				</div>
+			);
+		},
+		[b],
+	);
 
 	const renderResponsibility = useCallback((responsibility: string) => {
 		return <li key={responsibility}>{responsibility}</li>;
 	}, []);
 
-	const renderExperience = useCallback((experienceItem: IExperienceSection) => {
-		const { id, company, companyUrl, projects, responsibilities, position, period } =
-			experienceItem;
-		return (
-			<div className={cn(b('section'))} key={id}>
-				<div className={cn(b('section-company'))}>
-					{companyUrl ? (
-						<a href={companyUrl} target="_blank" rel="noopener noreferrer">
-							{company}
-						</a>
-					) : (
-						company
+	const renderExperience = useCallback(
+		(experienceItem: IExperienceSection) => {
+			const { id, company, companyUrl, projects, responsibilities, position, period } =
+				experienceItem;
+			return (
+				<div className={cn(b('section'))} key={id}>
+					<div className={cn(b('section-company'))}>
+						{companyUrl ? (
+							<a href={companyUrl} target="_blank" rel="noopener noreferrer">
+								{company}
+							</a>
+						) : (
+							company
+						)}
+					</div>
+					<div className={cn(b('section-position'))}>{position}</div>
+					<Period start={period.start} end={period.end} />
+					{responsibilities && responsibilities.length > 0 && (
+						<div className={cn(b('section-responsibilities'))}>
+							<div className={cn(b('section-responsibilities-heading'))}>
+								Responsibilities
+							</div>
+							{responsibilities.map(renderResponsibility)}
+						</div>
+					)}
+					{!isPrintMode && projects && projects.length > 0 && (
+						<CollapsableHOC heading="Projects" className={cn(b('section-projects'))}>
+							{projects.map(renderProject)}
+						</CollapsableHOC>
 					)}
 				</div>
-				<div className={cn(b('section-position'))}>{position}</div>
-				<Period start={period.start} end={period.end} />
-				{responsibilities && responsibilities.length > 0 && (
-					<div className={cn(b('section-responsibilities'))}>
-						<div className={cn(b('section-responsibilities-heading'))}>Responsibilities</div>
-						{responsibilities.map(renderResponsibility)}
-					</div>
-				)}
-				{!isPrintMode && projects && projects.length > 0 && (
-					<CollapsableHOC heading="Projects" className={cn(b('section-projects'))}>
-						{projects.map(renderProject)}
-					</CollapsableHOC>
-				)}
-			</div>
-		);
-	}, []);
+			);
+		},
+		[b, isPrintMode, renderProject, renderResponsibility],
+	);
 
 	if (!experience) return;
 

@@ -6,6 +6,7 @@ import RightColumn from '@/components/viewWeb/rightColumn/RightColumn';
 
 import { faPrint } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { memo } from 'react';
 import { useBemm as useBem } from 'bemm';
 
 import './ViewWeb.scss';
@@ -13,6 +14,21 @@ import './ViewWeb.scss';
 interface ViewWebProps {
 	togglePrintMode: () => void;
 }
+
+const PrintButton = memo(({ togglePrintMode }: ViewWebProps) => {
+	const b = useBem('web-view');
+
+	return (
+		<button
+			className={cn(b('print-button'))}
+			onClick={() => {
+				togglePrintMode();
+			}}
+		>
+			<FontAwesomeIcon icon={faPrint} />
+		</button>
+	);
+});
 
 const ViewWeb = ({ togglePrintMode }: ViewWebProps) => {
 	const b = useBem('web-view');
@@ -23,14 +39,7 @@ const ViewWeb = ({ togglePrintMode }: ViewWebProps) => {
 				<div className={cn(b('header', 'inner'))}>
 					<Header />
 				</div>
-				<button
-					className={cn(b('print-button'))}
-					onClick={() => {
-						togglePrintMode();
-					}}
-				>
-					<FontAwesomeIcon icon={faPrint} />
-				</button>
+				<PrintButton togglePrintMode={togglePrintMode} />
 			</header>
 			<div className={cn(b('content'))}>
 				<div className={cn(b('content', 'inner'))}>

@@ -3,12 +3,13 @@ import cn from 'classnames';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin, faGithub, faXTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { memo } from 'react';
 import { useAppContext } from '@/contexts/useAppContext';
 import { useBemm as useBem } from 'bemm';
 
 import './PersonalInfo.scss';
 
-const PersonalInfo = () => {
+const PersonalInfo = memo(() => {
 	const b = useBem('personal-info');
 	const { portfolio } = useAppContext() || {};
 	const { personalInfo } = portfolio || {};
@@ -68,6 +69,6 @@ const PersonalInfo = () => {
 			)}
 		</>
 	);
-};
+});
 
 export default PersonalInfo;

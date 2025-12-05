@@ -16,15 +16,18 @@ const STEP = 128;
 
 const Image = memo(({ selected, imageUrls }: ImagesProps) => {
 	const b = useBem('images');
-	const recalculatePositions = useCallback((selected: number) => {
-		const newPositions: number[] = [];
-		imageUrls.forEach((_, index) => {
-			const relativeIndex = (index - selected + imageUrls.length) % imageUrls.length;
-			newPositions[index] = relativeIndex * STEP;
-		});
+	const recalculatePositions = useCallback(
+		(selected: number) => {
+			const newPositions: number[] = [];
+			imageUrls.forEach((_, index) => {
+				const relativeIndex = (index - selected + imageUrls.length) % imageUrls.length;
+				newPositions[index] = relativeIndex * STEP;
+			});
 
-		return newPositions;
-	}, []);
+			return newPositions;
+		},
+		[imageUrls],
+	);
 
 	const [positions, setPositions] = useState(recalculatePositions(selected));
 
@@ -44,11 +47,11 @@ const Image = memo(({ selected, imageUrls }: ImagesProps) => {
 				</div>
 			);
 		});
-	}, [positions]);
+	}, [b, imageUrls, positions]);
 
 	useEffect(() => {
 		setPositions(recalculatePositions(selected));
-	}, [selected]);
+	}, [recalculatePositions, selected]);
 
 	return <div className={cn(b())}>{images}</div>;
 });

@@ -2,27 +2,53 @@ import ViewPrintContent from '@/components/viewPrintMode/PrintContent';
 import ViewPrintManager from '@/components/viewPrintMode/PrintManager';
 import ViewWeb from '@/components/viewWeb/ViewWeb';
 
-import { memo, useState } from 'react';
+import { AppContext } from '@/contexts/useAppContext.tsx';
+import { memo, useCallback, useMemo, useState } from 'react';
 import { PrintModeContext } from '@/contexts/usePrintModeContext';
 
 import '@/components/App.scss';
+import { AvatarImageContext } from '@/contexts/useAvatarImageContext';
 
-const App = memo(() => {
+interface AppProps {
+	portfolioData: IPortfolio;
+	generatedAt: string | number;
+}
+
+const App = memo(({ portfolioData, generatedAt }: AppProps) => {
 	const [isPrintMode, setPrintMode] = useState<boolean>(false);
 	const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
 
-	const onPrintEnd = () => setPrintMode(false);
-	const onPrintStart = () => setPrintMode(true);
+	const onPrintEnd = useCallback(() => setPrintMode(false), []);
+	const onPrintStart = useCallback(() => setPrintMode(true), []);
+
+	const generatedAtDate = useMemo(() => new Date(generatedAt), [generatedAt]);
+
+	const appContext = useMemo(
+		() => ({
+			portfolio: portfolioData!,
+			generatedAt: generatedAtDate,
+		}),
+		[portfolioData, generatedAtDate],
+	);
+
+	const selectedImageState = useMemo(
+		() => ({ selectedImageIndex, setSelectedImageIndex }),
+		[selectedImageIndex, setSelectedImageIndex],
+	);
 
 	return (
-		<PrintModeContext.Provider value={{ isPrintMode, selectedImageIndex, setSelectedImageIndex }}>
-			<ViewWeb togglePrintMode={onPrintStart} />
-			{isPrintMode && (
-				<ViewPrintManager onPrintEnd={onPrintEnd}>
-					<ViewPrintContent />
-				</ViewPrintManager>
-			)}
-		</PrintModeContext.Provider>
+		<AppContext.Provider value={appContext}>
+			<AvatarImageContext.Provider value={selectedImageState}>
+				<ViewWeb togglePrintMode={onPrintStart} />
+				<PrintModeContext.Provider value={{ isPrintMode }}>
+					{isPrintMode && (
+						<ViewPrintManager onPrintEnd={onPrintEnd}>
+							<ViewPrintContent />
+						</ViewPrintManager>
+					)}
+				</PrintModeContext.Provider>
+			</AvatarImageContext.Provider>
+		</AppContext.Provider>
 	);
 });
 
