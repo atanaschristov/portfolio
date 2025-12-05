@@ -7,17 +7,30 @@ import { useBemm as useBem } from 'bemm';
 
 import './Header.scss';
 
-const Header = memo(() => {
+const ImageCarouselMemoized = memo(() => {
 	const b = useBem('header');
+	return (
+		<section className={cn(b('avatar'))}>
+			<ImageCarousel />
+		</section>
+	);
+});
 
+const PersonalInfoMemoized = memo(() => {
+	const b = useBem('header');
+	return (
+		<section className={cn(b('personal-info'))}>
+			<PersonalInfo />
+		</section>
+	);
+});
+
+const Header = memo(() => {
+	// memoizing the components prevents rerendering og PersonalInfo if ImageCarousel rerenders
 	return (
 		<>
-			<section className={cn(b('avatar'))}>
-				<ImageCarousel />
-			</section>
-			<section className={cn(b('personal-info'))}>
-				<PersonalInfo />
-			</section>
+			<ImageCarouselMemoized />
+			<PersonalInfoMemoized />
 		</>
 	);
 });

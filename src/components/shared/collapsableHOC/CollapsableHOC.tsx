@@ -27,10 +27,8 @@ const CollapsableHOC = ({ heading, children, className }: CollapsableHOCProps) =
 			if (!section) return;
 
 			section.style.height = 'auto';
-
-			setExtended(isExtended);
 		}
-	}, [isExtended]);
+	}, [isExtended, isPrintMode]);
 
 	const onClick = useCallback(() => {
 		const section = sectionRef.current;

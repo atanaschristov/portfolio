@@ -1,6 +1,7 @@
 import cn from 'classnames';
 
 import { AppContext, useAppContext } from '@/contexts/useAppContext.tsx';
+import { AvatarImageContext, useAvatarImageContext } from '@/contexts/useAvatarImageContext';
 import { PrintModeContext, usePrintModeContext } from '@/contexts/usePrintModeContext';
 import { createRoot } from 'react-dom/client';
 import { useBemm as useBem } from 'bemm';
@@ -17,7 +18,8 @@ const PrintManager = ({
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const rootRef = useRef<ReturnType<typeof createRoot> | null>(null);
 	const printedRef = useRef(false);
-	const appContext = useAppContext();
+	const appContext = useAppContext()
+	const avatarImageContext = useAvatarImageContext();
 	const printModeContext = usePrintModeContext();
 
 	useEffect(() => {
@@ -30,7 +32,11 @@ const PrintManager = ({
 
 		rootRef.current.render(
 			<PrintModeContext.Provider value={{ ...printModeContext }}>
-				<AppContext.Provider value={appContext}>{children}</AppContext.Provider>
+				<AppContext.Provider value={appContext}>
+					<AvatarImageContext.Provider value={avatarImageContext}>
+					{children}
+					</AvatarImageContext.Provider>
+				</AppContext.Provider>
 			</PrintModeContext.Provider>,
 		);
 
@@ -53,7 +59,7 @@ const PrintManager = ({
 
 		window.addEventListener('afterprint', handleAfter);
 		return () => window.removeEventListener('afterprint', handleAfter);
-	}, [children]);
+	}, [appContext, avatarImageContext, children, onPrintEnd, printModeContext]);
 
 	return <div id="print-root" className={cn(b())} ref={containerRef} />;
 };

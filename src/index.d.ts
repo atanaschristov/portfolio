@@ -56,11 +56,11 @@ interface IProject {
 interface IExperienceSection {
 	id: string;
 	company: string;
-	position: string;
-	period: IPeriod;
 	companyUrl?: string;
-	responsibilities?: string[];
+	period: IPeriod;
+	position?: string;
 	projects?: IProject[];
+	responsibilities?: string[];
 }
 
 interface ISkill {
@@ -84,11 +84,9 @@ interface IPortfolio {
 	disclaimer?: string;
 }
 
-interface IAppContext {
+interface IAppDataContext {
 	portfolio: IPortfolio;
 	generatedAt: Date;
-	selectedImageIndex: number;
-	setSelectedImageIndex: (index: number) => void;
 }
 
 interface IListIndexData {

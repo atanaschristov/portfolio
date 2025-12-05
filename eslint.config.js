@@ -6,18 +6,30 @@ import tseslint from 'typescript-eslint';
 import { defineConfig, globalIgnores } from 'eslint/config';
 
 export default defineConfig([
-	globalIgnores(['dist']),
-	{
-		files: ['**/*.{ts,tsx}'],
-		extends: [
-			js.configs.recommended,
-			tseslint.configs.recommended,
-			reactHooks.configs['recommended-latest'],
-			reactRefresh.configs.vite,
-		],
-		languageOptions: {
-			ecmaVersion: 2020,
-			globals: globals.browser,
-		},
-	},
+  globalIgnores(["dist"]),
+  {
+    files: ["**/*.{ts,tsx}"],
+
+    extends: [
+      js.configs.recommended,
+      tseslint.configs.recommended,
+      // ⛔️ removed plugin configs from extends (ESLint 9 cannot load them)
+    ],
+
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+
+    plugins: {
+      "react-hooks": reactHooks,
+      "react-refresh": reactRefresh,
+    },
+
+    // ⬇️ HACK because react-hooks and react-refresh don't support latest lint rules limitations
+    rules: {
+      ...reactHooks.configs["recommended-latest"].rules,
+      ...reactRefresh.configs.vite.rules,
+    },
+  },
 ]);

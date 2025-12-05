@@ -21,7 +21,7 @@ const Project = ({ name, description, technologies, url, repo }: ProjectProps) =
 				{item}
 			</li>
 		));
-	}, [technologies]);
+	}, [b, technologies]);
 
 	return (
 		<div className={cn(b())}>
